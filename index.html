@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>
+        My bussiness class!
+    </title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <h1>Dragomir</h1>
+    <h1>Alexandru-Daniel</h1>
+    <p>Student @ studentie.regie</p>
+    <address>     
+        <p>Str. Minis</p>
+        <p>Phone: <a href="tel:+4074789919">0722deja imi suna cunsocut</a></p>
+        <p>Email: <a href="mailto:alexandru.dragomir422@gmail.com">alexandru.dragomir</a></p>
+        <p>Website: <a href="https://localhost">Valoar3</a></p>
+    </address>
+    <h1>Personal Information</h1>
+    <form>
+        <p>
+            <label>Please enter your name:</label>
+            <input type='text' required minlength="2" maxlength="30" placeholder="Firstname and lastname">
+        </p>
+        <p>
+            <label>Please enter your email:</label>
+            <input type='email' required minlength="10" maxlength="30" placeholder="Email">
+        </p>
+        <p>
+            <label>Please enter your phone:</label>
+            <input type='tel' required minlength="10" maxlength="30" placeholder="Phone">
+        </p>
+        <p>
+            <label>Please enter your website:
+        <input type='url' required minlength="10" maxlength="30" placeholder="url">
+            <small>(optional)</small>
+            </label>
+        </p>
+        <p>
+            <label>Please enter your age:
+        <input type='number' required min="18" max="90" placeholder="age">
+            </label>
+        </p>
+        <p>
+            <label>Please enter your birthday:
+        <input type='date' required min="2000-01-01" max="2020-03-26" placeholder="yyyy/mm/dd">
+            </label>
+        </p>
+        <p>
+            <label>Please choose something to eat:
+                <select>
+                    <option>---</option>
+                    <option>Apple</option>
+                    <option>KFC</option>
+                    <option>Brocolli</option>
+                </select>
+            </label>
+        </p>
+        <p>
+            <label>Please choose your fav fruit:
+                <input type='text' list="fruits-list" pattern="[Bb]anana|[Oo]range|[Aa]pple">
+            </label>
+        </p>
+        <p>
+            <label>Please choose your fav color:
+                <input type='color'>
+            </label>
+        </p>
+        <p>
+            <label>Please choose your wake-up time:
+                <input type='time'>
+            </label>
+        </p>
+        <datalist id="fruits-list">
+                <option value="Banana"></option>
+                <option value="Apple"></option>
+                <option value="Orange"></option>
+        </datalist>
+        <button type='submit'>Submit</button>
+        <button type='reset'>Reset</button>
+    </form>
+</body>
+
+</html>
