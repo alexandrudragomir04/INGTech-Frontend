@@ -20,6 +20,7 @@ header {
     padding:1%;
     border-radius:10px;
     background:white;
+    flex-direction: row;
 }
 
 header>img {
