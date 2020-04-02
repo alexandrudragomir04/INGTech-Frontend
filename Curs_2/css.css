@@ -1,0 +1,60 @@
+h1{
+    color:red;
+}
+
+.firstel{
+    font-size:x-large;
+}
+
+
+.others{
+    font-size:medium;
+}
+
+ul li:nth-child(1){
+    font-size:x-large;
+}
+
+ul li{
+    font-size: large;
+}
+
+h1{
+    color:aquamarine !important;
+}
+
+a:visited{
+    color:deeppink;
+}
+
+a:hover{
+    font-size:x-large;
+}
+
+a:active{
+    color:aqua;
+}
+
+#hide{
+    display:none;
+    background-color: pink;
+    padding:20px;
+}
+
+div#magic:hover p#hide{
+    display:block;
+}
+
+ul li:nth-child(1)::first-letter{
+    color: firebrick;
+    font-size: x-large;
+}
+
+html:{
+    font-size: 20px;
+}
+
+#remex{
+font-size:3rem;
+}
+
