@@ -1,4 +1,4 @@
-import {append} from './storage.js'
+import {append,read} from './storage.js'
 
 export function init() {
     window.addEventListener('DOMContentLoaded',onLoad);
@@ -28,7 +28,10 @@ function onSubmitDelete(event) {
 }
 
 function render() {
-
+const contacts = read();
+const items = contacts.map(item => `<li><input type='checkbox' name='delete'> ${item.name} &lt; ${item.email} &gt; ${item.phone}</li>`)
+document.getElementById("list").innerHTML = items.join(' ')
+const formDelete = document.getElementById("form-delete-button").hidden=contacts.length === 0;
 }
 
 

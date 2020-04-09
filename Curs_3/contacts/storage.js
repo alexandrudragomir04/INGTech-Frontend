@@ -1,4 +1,4 @@
-function read(){
+export function read(){
     const data=window.localStorage.getItem('ds--list--contacts')
     return data===null ? [] : JSON.parse(data)
 }
