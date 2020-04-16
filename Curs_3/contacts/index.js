@@ -1,4 +1,4 @@
-import {append,read} from './storage.js'
+import {append,read,write} from './storage.js'
 
 export function init() {
     window.addEventListener('DOMContentLoaded',onLoad);
@@ -24,7 +24,19 @@ render();
 }
 
 function onSubmitDelete(event) {
-
+    event.preventDefault()
+    console.log(event)
+    const contacts = read();
+    const list = document.getElementById('list');
+    const newCts = new Array();
+    for (let i = 0; i < contacts.length; i++) {
+        console.log(list)
+        if (!list.children[i].getElementsByTagName('input')[0].checked) {
+            newCts.push(contacts[i]);
+        }
+    }
+    write(newCts);
+    render();
 }
 
 function render() {
