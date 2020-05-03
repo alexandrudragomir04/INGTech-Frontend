@@ -1,4 +1,4 @@
-import { LitElement, html } from "lit-element"
+import { LitElement, html,css } from "lit-element"
 
 import "./AppItem"
 
@@ -7,6 +7,18 @@ export class AppList extends LitElement {
     return {
         list:{type:Array}
     };
+  }
+
+  static get styles(){
+    return css`
+    :host{
+      display:flex;
+      width:100%;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+    }
+    `
   }
   constructor() {
     super();

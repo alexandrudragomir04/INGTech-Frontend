@@ -81,7 +81,7 @@ export class AppMain extends LitElement {
     event.preventDefault();
     const fd = new FormData(event.target);
     const data = Object.fromEntries(fd);
-    this.list.push({day:data.day,todoText:data.todo})
+    this.list = [...this.list, { day: data.day, todoText: data.todo }]    
     await this.requestUpdate()
 
   }
