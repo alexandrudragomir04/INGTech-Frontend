@@ -3,20 +3,11 @@ import { LitElement, html,css } from "lit-element"
 import "./AppList"
 
 export class AppMain extends LitElement {
-//   static get properties() {
-//     return {
-//         list:{
-//             type:Array,
-//             day:{
-//                 type:String
-//             },
-//             todoText:{
-//                 type:String
-//             }
-
-//         }
-//     };
-//   }
+  static get properties() {
+    return {
+        list:[]
+    };
+  }
 
   static get styles(){
     return css`  
@@ -55,7 +46,8 @@ export class AppMain extends LitElement {
 
   constructor() {
     super();
-    this.list=[];
+    const jsonLocalStorageList = JSON.parse(window.localStorage.getItem('ds-items'))
+    this.list=jsonLocalStorageList?jsonLocalStorageList:[]
   }
 
   render() {
@@ -72,7 +64,6 @@ export class AppMain extends LitElement {
       </label>
       <button>Add Todo</button>
     </form>
-    <h1>Todo List</h1>
     <app-list .list='${this.list}'></app-list>
     `
   }
@@ -81,7 +72,8 @@ export class AppMain extends LitElement {
     event.preventDefault();
     const fd = new FormData(event.target);
     const data = Object.fromEntries(fd);
-    this.list = [...this.list, { day: data.day, todoText: data.todo }]    
+    this.list = [...this.list, { id:Date.now(),day: data.day, todoText: data.todo }]    
+    window.localStorage.setItem("ds-items",JSON.stringify(this.list))
     await this.requestUpdate()
 
   }

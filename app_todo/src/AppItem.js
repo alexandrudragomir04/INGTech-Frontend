@@ -4,6 +4,9 @@ import { LitElement, html, css } from "lit-element"
 export class AppItem extends LitElement {
     static get properties() {
         return {
+            id:{
+                type:Number
+            },
                 day:{
                     type:String
                 },
@@ -55,12 +58,10 @@ export class AppItem extends LitElement {
 
     }
     render() {
-        console.log(this.day)
-        return html`
-    <li>       
+        return html`   
+    <div class='id' hidden>${this.id}</div>
     <div class="todoDay">${this.day}</div>         
     <div class="todoText">${this.todoText}</div>
-    </li>
         `
     }
 
