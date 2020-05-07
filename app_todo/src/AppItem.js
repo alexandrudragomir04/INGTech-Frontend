@@ -4,16 +4,19 @@ import { LitElement, html, css } from "lit-element"
 export class AppItem extends LitElement {
     static get properties() {
         return {
-            id:{
-                type:Number
+            idd: {
+                type: Number
             },
-                day:{
-                    type:String
-                },
-                todoText:{
-                    type:String
-                }
-            
+            day: {
+                type: String
+            },
+            todoText: {
+                type: String
+            },
+            color: {
+                type: String
+            }
+
         };
     }
 
@@ -22,15 +25,9 @@ export class AppItem extends LitElement {
         :host{
             display:flex;
             flex-direction:column;
-            border:1px solid black;
-            padding-right:15px;
-            padding-top:5px;
-            padding-bottom:5px;
-            padding-left:20px;
-            margin-bottom:5%;
+            margin-bottom:2%;
             border-radius:5px;
             color:white;
-            background-color:black;
             align-items:center;
             text-align:center;
             min-width:200px;
@@ -51,10 +48,23 @@ export class AppItem extends LitElement {
         #deleteButton{
             border-radius:1px solid white;
             margin-top:5%;
-            border-radius:10px;
+            border-radius:5px;
+            height:25px;
             background-color:black;
             color:white;
             margin-left:2%;
+          }
+          #app-item{
+              display:flex;
+              position:relative;
+              flex-direction:column;
+              width:100%;
+              height:100%;
+            align-items:center;
+            justify-content:center;
+            padding-top:5px;
+            padding-bottom:5px;
+            color:white;
           }
     `;
 
@@ -62,28 +72,31 @@ export class AppItem extends LitElement {
 
     constructor() {
         super();
+        this.color = ''
 
     }
     render() {
-        return html`   
-        <form id="listItem"'>
-    <div class='id' hidden>${this.id}</div>
+        return html`
+        <div id='app-item' style='border-radius:7.5px;border:1px solid ${this.color};  background-color:${this.color};'>   
+        <form id="listItem">
+    <div  hidden>${this.idd}</div>
     <div class="todoDay">${this.day}</div>         
     <div class="todoText">${this.todoText}</div>
         </form>
         <button @click='${this.onDelete}}' id='deleteButton'>Delete</button>
+        </div>
         `
     }
 
     onDelete() {
-        const list = window.localStorage.getItem('ds-items')?JSON.parse(window.localStorage.getItem('ds-items')):[]
-        if(list.length>0){
-            const deletedIndex = list.find((item) => item.id === this.id);
+        const list = window.localStorage.getItem('ds-items') ? JSON.parse(window.localStorage.getItem('ds-items')) : []
+        if (list.length > 0) {
+            const deletedIndex = list.find((item) => item.idd === this.idd);
             if (deletedIndex) list.splice(deletedIndex, 1);
-            window.localStorage.setItem('ds-items',JSON.stringify(list));
+            window.localStorage.setItem('ds-items', JSON.stringify(list));
         }
         this.remove(this)
-        this.dispatchEvent('removedItem',{bubbles:true,cancelable:true})
+        
     }
 }
 

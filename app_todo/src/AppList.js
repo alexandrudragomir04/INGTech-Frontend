@@ -32,10 +32,9 @@ export class AppList extends LitElement {
   }
   render() {
      return html`
-     <h1> Todo List</h1>
-        <ul>${this.list.map(todoItem=> html`
-        <app-item id='${todoItem.id}' day='${todoItem.day}' todoText='${todoItem.todoText}'></app-item>
-        `)}</ul>
+        ${this.list.map(todoItem=> html`
+        <app-item .idd='${todoItem.id}' .day='${todoItem.day}' .todoText='${todoItem.todoText}' .color='${todoItem.color}'></app-item>
+        `)}
         `
       }
 
