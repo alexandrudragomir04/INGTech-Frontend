@@ -47,8 +47,15 @@ export class AppItem extends LitElement {
             width:200px;
             height:fit-content;
             overflow-wrap:break-word;
-
         }
+        #deleteButton{
+            border-radius:1px solid white;
+            margin-top:5%;
+            border-radius:10px;
+            background-color:black;
+            color:white;
+            margin-left:2%;
+          }
     `;
 
     }
@@ -59,12 +66,25 @@ export class AppItem extends LitElement {
     }
     render() {
         return html`   
+        <form id="listItem"'>
     <div class='id' hidden>${this.id}</div>
     <div class="todoDay">${this.day}</div>         
     <div class="todoText">${this.todoText}</div>
+        </form>
+        <button @click='${this.onDelete}}' id='deleteButton'>Delete</button>
         `
     }
 
+    onDelete() {
+        const list = window.localStorage.getItem('ds-items')?JSON.parse(window.localStorage.getItem('ds-items')):[]
+        if(list.length>0){
+            const deletedIndex = list.find((item) => item.id === this.id);
+            if (deletedIndex) list.splice(deletedIndex, 1);
+            window.localStorage.setItem('ds-items',JSON.stringify(list));
+        }
+        this.remove(this)
+        this.dispatchEvent('removedItem',{bubbles:true,cancelable:true})
+    }
 }
 
 window.customElements.define("app-item", AppItem);
